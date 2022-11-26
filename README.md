@@ -41,6 +41,20 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>linux_aarch64_ogre1.10</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17652&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/gz-gui-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_ogre1.10" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_ogre1.12</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17652&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/gz-gui-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_ogre1.12" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64_ogre1.10</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17652&branchName=main">

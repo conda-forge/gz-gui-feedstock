@@ -1,11 +1,11 @@
-About gz-gui
-============
+About gz-gui-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gz-gui-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/gazebosim/gz-gui
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gz-gui-feedstock/blob/main/LICENSE.txt)
 
 Summary:  Builds on top of Qt to provide widgets which are useful when developing robotics applications, such as a 3D view, plots, dashboard, etc, and can be used together in a convenient unified interface.
 

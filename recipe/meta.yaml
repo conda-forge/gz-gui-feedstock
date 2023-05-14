@@ -1,6 +1,6 @@
 {% set component_name = "gui" %}
 {% set repo_name = "gz-" + component_name %}
-{% set version = "7_7.1.0" %}
+{% set version = "7_7.2.0" %}
 {% set major_version = version.split('_')[0] %}
 {% set version_package = version.split('_')[1] %}
 {% set name = repo_name + major_version %}
@@ -13,7 +13,7 @@ package:
 
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ version }}.tar.gz
-    sha256: 5b8155f13265d209cd5ab48177f2c340c48b9b3de0c0632b5168ba00508c07d4
+    sha256: 735ad5826fd8e40244ce9ac92f6600676f6b64e58ca9d7c021131467018f4584
 
 build:
   number: 0

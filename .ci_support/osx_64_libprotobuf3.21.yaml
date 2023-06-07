@@ -14,12 +14,12 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '15'
+libabseil:
+- '20230125'
 libprotobuf:
-- 4.23.2
+- '3.21'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-ogre:
-- '1.10'
 qt_main:
 - '5.15'
 target_platform:

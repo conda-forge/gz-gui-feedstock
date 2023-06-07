@@ -6,10 +6,10 @@ channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2019
+libabseil:
+- '20230125'
 libprotobuf:
-- 4.23.2
-ogre:
-- '1.12'
+- '3.21'
 qt_main:
 - '5.15'
 target_platform:

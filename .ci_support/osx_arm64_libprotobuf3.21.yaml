@@ -1,6 +1,4 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
-MACOSX_SDK_VERSION:
 - '11.0'
 c_compiler:
 - clang
@@ -14,16 +12,16 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '15'
+libabseil:
+- '20230125'
 libprotobuf:
 - '3.21'
 macos_machine:
-- x86_64-apple-darwin13.4.0
-ogre:
-- '1.10'
+- arm64-apple-darwin20.0.0
 qt_main:
 - '5.15'
 target_platform:
-- osx-64
+- osx-arm64
 tinyxml2:
 - '9'
 zip_keys:

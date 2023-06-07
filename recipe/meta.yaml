@@ -55,7 +55,7 @@ outputs:
         - libgz-utils2
         - qt-main
         - xorg-libxfixes  # [linux]
-        - ogre  {{ ogre }}
+        - ogre 1.10.*
     test:
       commands:
         - test -f ${PREFIX}/include/gz/{{ component_version }}/gz/{{ component_name }}.hh  # [not win]

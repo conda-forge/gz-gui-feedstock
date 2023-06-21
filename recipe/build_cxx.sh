@@ -17,6 +17,7 @@ cmake ${CMAKE_ARGS} -GNinja \
       -DCMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_SKIP=True \
       -DBUILD_SHARED_LIBS=ON \
       -DBUILD_TESTING=OFF \
+      -DGZ_ENABLE_RELOCATABLE_INSTALL:BOOL=ON ^\
       ..
 
 cmake --build . --config Release

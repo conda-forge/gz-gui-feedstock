@@ -11,6 +11,7 @@ cmake ^
     -DCMAKE_INSTALL_LIBDIR=lib ^
     -DBUILD_SHARED_LIBS=ON ^
     -DBUILD_TESTING=ON ^
+    -DGZ_ENABLE_RELOCATABLE_INSTALL:BOOL=ON ^
     %SRC_DIR%
 if errorlevel 1 exit 1
 

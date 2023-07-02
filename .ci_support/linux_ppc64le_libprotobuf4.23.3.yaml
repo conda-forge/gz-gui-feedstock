@@ -17,7 +17,7 @@ docker_image:
 libabseil:
 - '20230125'
 libprotobuf:
-- 4.23.2
+- 4.23.3
 qt_main:
 - '5.15'
 target_platform:

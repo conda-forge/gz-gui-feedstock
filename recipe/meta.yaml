@@ -15,7 +15,7 @@ source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ version }}.tar.gz
     sha256: 4bb54ca7259fc312b6891d7054f04a3d8b89b150ffb31fb2fe50c717e20feac8
     patches:
-      - 552.patch
+      - 580.patch
 
 build:
   number: 0

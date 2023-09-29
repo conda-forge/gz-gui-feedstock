@@ -48,9 +48,9 @@ outputs:
         - libgz-math7
         - libgz-common5
         - libgz-plugin2
-        - libgz-transport12
-        - libgz-rendering7
-        - libgz-msgs9
+        - libgz-transport13
+        - libgz-rendering8
+        - libgz-msgs10
         - libgz-tools2
         - libgz-utils2
         - qt-main

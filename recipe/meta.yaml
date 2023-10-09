@@ -1,6 +1,6 @@
 {% set component_name = "gui" %}
 {% set repo_name = "gz-" + component_name %}
-{% set version = "7_7.2.1" %}
+{% set version = "8_8.0.0" %}
 {% set major_version = version.split('_')[0] %}
 {% set version_package = version.split('_')[1] %}
 {% set name = repo_name + major_version %}
@@ -13,9 +13,9 @@ package:
 
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ version }}.tar.gz
-    sha256: 15047e78012dcedb90af431d8b893c035146e6301ce02a40a47ffff0a90e2261
+    sha256: 4bb54ca7259fc312b6891d7054f04a3d8b89b150ffb31fb2fe50c717e20feac8
     patches:
-      - 552.patch
+      - 580.patch
 
 build:
   number: 0
@@ -48,9 +48,9 @@ outputs:
         - libgz-math7
         - libgz-common5
         - libgz-plugin2
-        - libgz-transport12
-        - libgz-rendering7
-        - libgz-msgs9
+        - libgz-transport13
+        - libgz-rendering8
+        - libgz-msgs10
         - libgz-tools2
         - libgz-utils2
         - qt-main

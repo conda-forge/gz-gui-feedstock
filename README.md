@@ -81,8 +81,8 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--gui7-green.svg)](https://anaconda.org/conda-forge/gz-gui7) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-gui7.svg)](https://anaconda.org/conda-forge/gz-gui7) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-gui7.svg)](https://anaconda.org/conda-forge/gz-gui7) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-gui7.svg)](https://anaconda.org/conda-forge/gz-gui7) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--gui7-green.svg)](https://anaconda.org/conda-forge/libgz-gui7) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-gui7.svg)](https://anaconda.org/conda-forge/libgz-gui7) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-gui7.svg)](https://anaconda.org/conda-forge/libgz-gui7) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-gui7.svg)](https://anaconda.org/conda-forge/libgz-gui7) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--gui8-green.svg)](https://anaconda.org/conda-forge/gz-gui8) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-gui8.svg)](https://anaconda.org/conda-forge/gz-gui8) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-gui8.svg)](https://anaconda.org/conda-forge/gz-gui8) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-gui8.svg)](https://anaconda.org/conda-forge/gz-gui8) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--gui8-green.svg)](https://anaconda.org/conda-forge/libgz-gui8) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-gui8.svg)](https://anaconda.org/conda-forge/libgz-gui8) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-gui8.svg)](https://anaconda.org/conda-forge/libgz-gui8) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-gui8.svg)](https://anaconda.org/conda-forge/libgz-gui8) |
 
 Installing gz-gui
 =================
@@ -94,41 +94,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gz-gui7, libgz-gui7` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gz-gui8, libgz-gui8` can be installed with `conda`:
 
 ```
-conda install gz-gui7 libgz-gui7
-```
-
-or with `mamba`:
-
-```
-mamba install gz-gui7 libgz-gui7
-```
-
-It is possible to list all of the versions of `gz-gui7` available on your platform with `conda`:
-
-```
-conda search gz-gui7 --channel conda-forge
+conda install gz-gui8 libgz-gui8
 ```
 
 or with `mamba`:
 
 ```
-mamba search gz-gui7 --channel conda-forge
+mamba install gz-gui8 libgz-gui8
+```
+
+It is possible to list all of the versions of `gz-gui8` available on your platform with `conda`:
+
+```
+conda search gz-gui8 --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search gz-gui8 --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search gz-gui7 --channel conda-forge
+mamba repoquery search gz-gui8 --channel conda-forge
 
-# List packages depending on `gz-gui7`:
-mamba repoquery whoneeds gz-gui7 --channel conda-forge
+# List packages depending on `gz-gui8`:
+mamba repoquery whoneeds gz-gui8 --channel conda-forge
 
-# List dependencies of `gz-gui7`:
-mamba repoquery depends gz-gui7 --channel conda-forge
+# List dependencies of `gz-gui8`:
+mamba repoquery depends gz-gui8 --channel conda-forge
 ```
 
 

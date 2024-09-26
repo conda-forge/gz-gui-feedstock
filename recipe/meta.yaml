@@ -18,7 +18,7 @@ source:
       - 552.patch
 
 build:
-  number: 7
+  number: 8
 
 outputs:
   - name: {{ cxx_name }}
@@ -30,6 +30,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - {{ compiler('c') }}
         - ninja
         - cmake

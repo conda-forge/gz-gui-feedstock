@@ -30,6 +30,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - {{ compiler('c') }}
         - ninja
         - cmake

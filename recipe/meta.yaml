@@ -1,6 +1,6 @@
 {% set component_name = "gui" %}
 {% set repo_name = "gz-" + component_name %}
-{% set version = "8.1.1" %}
+{% set version = "9.0.0" %}
 {% set major_version = version.split('.')[0] %}
 {% set name = repo_name + major_version %}
 {% set component_version = component_name + major_version %}
@@ -12,11 +12,11 @@ package:
 
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ major_version }}_{{ version }}.tar.gz
-    sha256: f0365ee732133c4c173aa664eb3092a4a60c13c120a59500dcdafadd4a55ec17
+    sha256: 9c953875c8b2dedc39d6ca824d5d837f8eace6bc492192a085c42b30799c33b2
 
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - name: {{ cxx_name }}
@@ -25,6 +25,8 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage(cxx_name, max_pin='x') }}
+      ignore_run_exports_from:
+        - python
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -39,22 +41,25 @@ outputs:
         - {{ cdt('libxdamage') }}  # [linux]
         - {{ cdt('libxxf86vm') }}  # [linux]
         - {{ cdt('libxext') }}     # [linux]
+        - python                                 # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
       host:
-        - libgz-cmake3
+        - libgz-cmake4
         - libabseil
         - libprotobuf
         - tinyxml2
-        - libgz-math7
-        - libgz-common5
-        - libgz-plugin2
-        - libgz-transport13
-        - libgz-rendering8
-        - libgz-msgs10
+        - libgz-math8
+        - libgz-common6
+        - libgz-plugin3
+        - libgz-transport14
+        - libgz-rendering9
+        - libgz-msgs11
         - libgz-tools2
-        - libgz-utils2
+        - libgz-utils3
         - qt-main
         - xorg-libxfixes  # [linux]
         - ogre 1.10.*
+        - python
     test:
       commands:
         - test -f ${PREFIX}/include/gz/{{ component_version }}/gz/{{ component_name }}.hh  # [not win]

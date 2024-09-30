@@ -23,9 +23,9 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 libabseil:
-- '20240722'
+- '20240116'
 libprotobuf:
-- 5.27.5
+- 4.25.3
 qt_main:
 - '5.15'
 target_platform:

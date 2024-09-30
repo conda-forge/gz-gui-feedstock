@@ -1,3 +1,23 @@
 # gz-gui requires Metal
 MACOSX_SDK_VERSION:        # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
+
+
+# Hardcode python version to avoid have one build job
+# for python version as in the end the generated
+# artifacts do not depend on Python version
+zip_keys:
+  -
+    - python
+    - numpy
+    - python_impl
+
+python:
+  # part of a zip_keys: python, python_impl, numpy
+  - 3.11.* *_cpython
+python_impl:
+  # part of a zip_keys: python, python_impl, numpy
+  - cpython
+numpy:
+  # part of a zip_keys: python, python_impl, numpy
+  - 1.23

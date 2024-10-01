@@ -16,7 +16,7 @@ source:
 
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: {{ cxx_name }}
@@ -27,6 +27,10 @@ outputs:
         - {{ pin_subpackage(cxx_name, max_pin='x') }}
       ignore_run_exports:
         - python
+        - python_abi
+      ignore_run_exports_from:
+        - python
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     requirements:
       build:
         - {{ compiler('cxx') }}

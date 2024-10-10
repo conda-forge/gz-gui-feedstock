@@ -47,7 +47,7 @@ outputs:
         - libgz-tools2
         - libgz-utils2
         - qt-main
-        - libgl-devel # [linux]
+        - libgl-devel  # [linux]
         - ogre 1.10.*
     test:
       commands:

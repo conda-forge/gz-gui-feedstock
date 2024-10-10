@@ -1,6 +1,6 @@
 {% set component_name = "gui" %}
 {% set repo_name = "gz-" + component_name %}
-{% set version = "8.1.1" %}
+{% set version = "8.3.0" %}
 {% set major_version = version.split('.')[0] %}
 {% set name = repo_name + major_version %}
 {% set component_version = component_name + major_version %}

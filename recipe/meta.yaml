@@ -48,6 +48,7 @@ outputs:
         - libgz-utils2
         - qt-main
         - libgl-devel  # [linux]
+        - dlfcn-win32  # [win]
         - ogre 1.10.*
     test:
       commands:

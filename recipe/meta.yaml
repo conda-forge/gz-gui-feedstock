@@ -17,6 +17,7 @@ source:
 
 build:
   number: 1
+  skip: true  # [not is_python_min]
 
 outputs:
   - name: {{ cxx_name }}
@@ -39,13 +40,7 @@ outputs:
         - ninja
         - cmake
         - pkg-config
-        - {{ cdt('mesa-libgl-devel') }}  # [linux]
-        - {{ cdt('mesa-dri-drivers') }}  # [linux]
-        - {{ cdt('libselinux') }}  # [linux]
-        - {{ cdt('libxdamage') }}  # [linux]
-        - {{ cdt('libxxf86vm') }}  # [linux]
-        - {{ cdt('libxext') }}     # [linux]
-        - python                                 # [build_platform != target_platform]
+        - python  {{ python_min }}               # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
       host:
         - libgz-cmake4
@@ -63,7 +58,8 @@ outputs:
         - qt-main
         - xorg-libxfixes  # [linux]
         - ogre 1.10.*
-        - python
+        - python  {{ python_min }}
+        - libgl-devel  # [linux]
     test:
       commands:
         - test -f ${PREFIX}/include/gz/{{ component_version }}/gz/{{ component_name }}.hh  # [not win]

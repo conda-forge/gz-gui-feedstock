@@ -44,7 +44,7 @@ outputs:
         - libgz-plugin2
         - libgz-transport13
         - libgz-rendering8
-        - libgz-msgs10
+        - libgz-msgs10  >=10.3.2
         - libgz-tools2
         - libgz-utils2
         - qt-main

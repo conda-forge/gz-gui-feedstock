@@ -13,10 +13,11 @@ package:
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ major_version }}_{{ version }}.tar.gz
     sha256: d2d6b1557c574c6774c53893c9cbaa8e2b85eed0bf515e36cd46b3f6a43bfc02
-
+    patches:
+      - 677.patch
 
 build:
-  number: 4
+  number: 5
 
 outputs:
   - name: {{ cxx_name }}
@@ -43,7 +44,7 @@ outputs:
         - libgz-plugin2
         - libgz-transport13
         - libgz-rendering8
-        - libgz-msgs10
+        - libgz-msgs10  >=10.3.2
         - libgz-tools2
         - libgz-utils2
         - qt-main

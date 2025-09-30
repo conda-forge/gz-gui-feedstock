@@ -14,13 +14,7 @@ github:
   branch_name: main
   tooling_branch_name: main
 conda_build_tool: rattler-build
-build_platform:
-  linux_64: linux-64
-  osx_64: osx-64
-  osx_arm64: osx-arm64
-  win_64: win-64
-conda_forge_output_validation: true
-test: native_and_emulated
+conda_install_tool: pixi
 provider:
   linux_aarch64: default
   linux_ppc64le: default

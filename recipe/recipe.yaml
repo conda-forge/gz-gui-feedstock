@@ -158,9 +158,6 @@ outputs:
             - cmake-package-check
             - ${{ compiler('c') }}
             - ${{ compiler('cxx') }}
-      - python:
-          imports:
-            - gz.${{ component_name }}${{ major_version }}
 
 about:
   homepage: https://github.com/gazebosim/${{ repo_name }}

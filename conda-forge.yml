@@ -2,6 +2,7 @@ bot:
   abi_migration_branches:
   # See https://github.com/gazebosim/docs/blob/master/tools/versions.md for current supported versions
   - v8
+  - v9
   automerge: true
 build_platform:
   linux_aarch64: linux_64
@@ -13,6 +14,14 @@ conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
+conda_build_tool: rattler-build
+build_platform:
+  linux_64: linux-64
+  osx_64: osx-64
+  osx_arm64: osx-arm64
+  win_64: win-64
+conda_forge_output_validation: true
+test: native_and_emulated
 provider:
   linux_aarch64: default
   linux_ppc64le: default

@@ -20,7 +20,7 @@ source:
       - 677.patch
 
 build:
-  number: 6
+  number: 0
 
 outputs:
   - package:
@@ -32,6 +32,15 @@ outputs:
         - if: win
           then: bld_cxx.bat
     requirements:
+      ignore_run_exports:
+        by_name:
+          - python
+          - python_abi
+        from_package:
+          - python
+          - if: build_platform != target_platform
+            then:
+              - cross-python_${{ target_platform }}
       build:
         - ${{ compiler('cxx') }}
         - ${{ compiler('c') }}
@@ -39,6 +48,10 @@ outputs:
         - ninja
         - cmake
         - pkg-config
+        - if: build_platform != target_platform
+          then:
+            - python ${{ python_min }}.*
+            - cross-python_${{ target_platform }}
       host:
         - libgz-cmake3
         - libabseil
@@ -53,9 +66,11 @@ outputs:
         - libgz-tools2
         - libgz-utils2
         - qt-main
+        - python ${{ python_min }}.*
         - if: linux
           then:
             - libgl-devel
+            - xorg-libxfixes
         - if: win
           then:
             - dlfcn-win32

@@ -3,13 +3,11 @@ schema_version: 1
 context:
   component_name: gui
   repo_name: ${{ "gz-" + component_name }}
-  version: 9.0.0
+  version: 9.0.1
   major_version: "9"
   name: ${{ repo_name + major_version }}
   component_version: ${{ component_name + major_version }}
   cxx_name: ${{ "lib" + name }}
-  py_name: ${{ "py" + name }}
-  is_python_min: ${{ python_version.split('.')[0:2] | join('.') | float >= 3.8 }}
 
 recipe:
   name: ${{ name }}
@@ -20,7 +18,7 @@ source:
     sha256: 3b1df7fd30e8b2ffc6d10cda8fb0b3fdc35ce15b3f25b29a13c5e2adf7b49b98
 
 build:
-  number: 4
+  number: 3
 
 outputs:
   - package:
@@ -31,10 +29,16 @@ outputs:
           then: build_cxx.sh
         - if: win
           then: bld_cxx.bat
+    requirements:
       ignore_run_exports:
         by_name:
           - python
-    requirements:
+          - python_abi
+        from_package:
+          - python
+          - if: build_platform != target_platform
+            then:
+              - cross-python_${{ target_platform }}
       build:
         - ${{ compiler('cxx') }}
         - ${{ compiler('c') }}
@@ -42,26 +46,29 @@ outputs:
         - ninja
         - cmake
         - pkg-config
+        - if: build_platform != target_platform
+          then:
+            - python ${{ python_min }}.*
+            - cross-python_${{ target_platform }}
       host:
-        - libgz-cmake3
+        - libgz-cmake4
         - libabseil
         - libprotobuf
         - tinyxml2
-        - libgz-math7
-        - libgz-common5
-        - libgz-plugin2
-        - libgz-transport13
-        - libgz-rendering8
-        - libgz-msgs10 >=10.3.2
+        - libgz-math8
+        - libgz-common6
+        - libgz-plugin3
+        - libgz-transport14
+        - libgz-rendering9
+        - libgz-msgs11
         - libgz-tools2
-        - libgz-utils2
+        - libgz-utils3
         - qt-main
-        - python
-        - pybind11
-        - pybind11-abi
+        - python ${{ python_min }}.*
         - if: linux
           then:
             - libgl-devel
+            - xorg-libxfixes
         - if: win
           then:
             - dlfcn-win32
@@ -88,47 +95,10 @@ outputs:
               - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
 
   - package:
-      name: ${{ py_name }}
-    build:
-      skip:
-        - if: not is_python_min
-          then: true
-      script:
-        - if: unix
-          then: build_py.sh
-        - if: win
-          then: bld_py.bat
-    requirements:
-      build:
-        - python
-        - cross-python_${{ target_platform }}
-        - ${{ compiler('cxx') }}
-        - ${{ compiler('c') }}
-        - ${{ stdlib('c') }}
-        - ninja
-        - cmake
-        - pkg-config
-      host:
-        - ${{ pin_subpackage(cxx_name, exact=True) }}
-        - python
-        - pybind11
-        - pybind11-abi
-      run:
-        - ${{ pin_subpackage(cxx_name, exact=True) }}
-        - python
-    tests:
-      - python:
-          imports:
-            - gz.gui9
-
-  - package:
       name: ${{ name }}
     requirements:
       run:
         - ${{ pin_subpackage(cxx_name, exact=True) }}
-        - if: is_python_min
-          then:
-            - ${{ pin_subpackage(py_name, exact=True) }}
       run_exports:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:
@@ -149,10 +119,6 @@ outputs:
               - if not exist %PREFIX%\\Library\\lib\\${{ name }}.lib exit 1
               - if not exist %PREFIX%\\Library\\bin\\${{ name }}.dll exit 1
               - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
-      - python:
-          imports:
-            - if: is_python_min
-              then: gz.gui9
 
   # Versionless dummy packages, see https://github.com/conda-forge/gz-sim-feedstock/issues/102
   - package:

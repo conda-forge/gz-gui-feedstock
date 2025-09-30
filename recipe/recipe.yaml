@@ -15,7 +15,7 @@ recipe:
 
 source:
   - url: https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz
-    sha256: 3b1df7fd30e8b2ffc6d10cda8fb0b3fdc35ce15b3f25b29a13c5e2adf7b49b98
+    sha256: 5ed385dba7f7258b7032f188601dea80fa5bc74de460d7a78122f3cf6e0339b1
 
 build:
   number: 3
@@ -73,6 +73,8 @@ outputs:
           then:
             - dlfcn-win32
         - ogre 1.10.*
+      run:
+        - libgl-devel
       run_exports:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:

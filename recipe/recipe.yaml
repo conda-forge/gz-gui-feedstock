@@ -139,16 +139,6 @@ outputs:
             - ${{ compiler('cxx') }}
 
   - package:
-      name: gz-${{ component_name }}-python
-    requirements:
-      run:
-        - ${{ pin_subpackage(python_name, upper_bound='x.x.x') }}
-    tests:
-      - python:
-          imports:
-            - gz.${{ component_name }}${{ major_version }}
-
-  - package:
       name: gz-${{ component_name }}
     requirements:
       run:

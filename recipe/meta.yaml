@@ -17,7 +17,7 @@ source:
       - 677.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [not is_python_min]
 
 outputs:

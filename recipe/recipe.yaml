@@ -15,7 +15,7 @@ recipe:
 
 source:
   - url: https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz
-    sha256: 2f3169bb15b0d9cfa3ea49c2bc3e717b1b7c44a0c9b3a04c1f3a2b5c05c9c6e0
+    sha256: b5dd33aa20c43e34bbaf2c0c00a5bf5643f31d7808b52a38e90107b32f31b1c3
 
 build:
   number: 0

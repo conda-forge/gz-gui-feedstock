@@ -1,0 +1,176 @@
+schema_version: 1
+
+context:
+  component_name: gui
+  repo_name: ${{ "gz-" + component_name }}
+  version: 9.0.1
+  major_version: "9"
+  name: ${{ repo_name + major_version }}
+  component_version: ${{ component_name + major_version }}
+  cxx_name: ${{ "lib" + name }}
+
+recipe:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz
+    sha256: 5ed385dba7f7258b7032f188601dea80fa5bc74de460d7a78122f3cf6e0339b1
+    patches:
+      - 677.patch
+
+build:
+  number: 3
+
+outputs:
+  - package:
+      name: ${{ cxx_name }}
+    build:
+      script:
+        - if: unix
+          then: build_cxx.sh
+        - if: win
+          then: bld_cxx.bat
+    requirements:
+      ignore_run_exports:
+        by_name:
+          - python
+          - python_abi
+        from_package:
+          - python
+          - if: build_platform != target_platform
+            then:
+              - cross-python_${{ target_platform }}
+      build:
+        - ${{ compiler('cxx') }}
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
+        - ninja
+        - cmake
+        - pkg-config
+        - if: build_platform != target_platform
+          then:
+            - python ${{ python_min }}.*
+            - cross-python_${{ target_platform }}
+      host:
+        - libgz-cmake4
+        - libabseil
+        - libprotobuf
+        - tinyxml2
+        - libgz-math8
+        - libgz-common6
+        - libgz-plugin3
+        - libgz-transport14
+        - libgz-rendering9
+        - libgz-msgs11
+        - libgz-tools2
+        - libgz-utils3
+        - qt-main
+        - python ${{ python_min }}.*
+        - if: linux
+          then:
+            - libgl-devel
+            - xorg-libxfixes
+        - if: win
+          then:
+            - dlfcn-win32
+        - ogre 1.10.*
+      run:
+        - if: linux
+          then:
+            - libgl-devel
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+    tests:
+      - script:
+          - if: not win
+            then:
+              - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
+              - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
+          - if: linux
+            then:
+              - test -f ${PREFIX}/lib/lib${{ name }}.so
+          - if: osx
+            then:
+              - test -f ${PREFIX}/lib/lib${{ name }}.dylib
+          - if: win
+            then:
+              - if not exist %PREFIX%\\Library\\include\\gz\\${{ component_version }}\\gz\\${{ component_name }}.hh exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
+
+  - package:
+      name: ${{ name }}
+    requirements:
+      run:
+        - ${{ pin_subpackage(cxx_name, exact=True) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+    tests:
+      - script:
+          - if: not win
+            then:
+              - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
+              - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
+          - if: linux
+            then:
+              - test -f ${PREFIX}/lib/lib${{ name }}.so
+          - if: osx
+            then:
+              - test -f ${PREFIX}/lib/lib${{ name }}.dylib
+          - if: win
+            then:
+              - if not exist %PREFIX%\\Library\\include\\gz\\${{ component_version }}\\gz\\${{ component_name }}.hh exit 1
+              - if not exist %PREFIX%\\Library\\lib\\${{ name }}.lib exit 1
+              - if not exist %PREFIX%\\Library\\bin\\${{ name }}.dll exit 1
+              - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
+
+  # Versionless dummy packages, see https://github.com/conda-forge/gz-sim-feedstock/issues/102
+  - package:
+      name: libgz-${{ component_name }}
+    requirements:
+      run:
+        - ${{ pin_subpackage(cxx_name, exact=true) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+        - ${{ pin_subpackage('libgz-gui', upper_bound='x') }}
+    tests:
+      - script:
+          - cmake-package-check gz-${{ component_name }}${{ major_version }}
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+
+  - package:
+      name: gz-${{ component_name }}
+    requirements:
+      run:
+        - ${{ pin_subpackage(name, exact=true) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+        - ${{ pin_subpackage('libgz-gui', upper_bound='x') }}
+    tests:
+      - script:
+          - cmake-package-check gz-${{ component_name }}${{ major_version }}
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+
+about:
+  homepage: https://github.com/gazebosim/${{ repo_name }}
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Builds on top of Qt to provide widgets which are useful when developing robotics applications, such as a 3D view, plots, dashboard, etc, and can be used together in a convenient unified interface.
+
+extra:
+  feedstock-name: ${{ repo_name }}
+  recipe-maintainers:
+    - wolfv
+    - traversaro
+    - Tobias-Fischer
+    - j-rivero

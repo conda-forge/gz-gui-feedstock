@@ -74,7 +74,9 @@ outputs:
             - dlfcn-win32
         - ogre 1.10.*
       run:
-        - libgl-devel
+        - if: linux
+          then:
+            - libgl-devel
       run_exports:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:

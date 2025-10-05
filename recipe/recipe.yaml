@@ -30,15 +30,6 @@ outputs:
         - if: win
           then: bld_cxx.bat
     requirements:
-      ignore_run_exports:
-        by_name:
-          - python
-          - python_abi
-        from_package:
-          - python
-          - if: build_platform != target_platform
-            then:
-              - cross-python_${{ target_platform }}
       build:
         - ${{ compiler('cxx') }}
         - ${{ compiler('c') }}
@@ -48,8 +39,6 @@ outputs:
         - pkg-config
         - if: build_platform != target_platform
           then:
-            - python ${{ python_min }}.*
-            - cross-python_${{ target_platform }}
             - qt6-main
       host:
         - libgz-cmake
@@ -65,13 +54,20 @@ outputs:
         - libgz-tools
         - libgz-utils
         - qt6-main
-        - python ${{ python_min }}.*
         - if: linux
           then:
             - libgl-devel
         - if: win
           then:
             - dlfcn-win32
+      run:
+        # This is actually only necessary to make sure that find_package(gz-gui) works out of the box,
+        # as qt6 transitively calls find_package(OpenGL). As gz-gui is mostly a C++ library we add it
+        # as run dependency, even if the proper solution may be to have dedicated *-devel packages, that
+        # will depend on qt6-main-devel package, that itself should depend on libgl-devel (only on Linux)
+        - if: linux
+          then:
+            - libgl-devel
       run_exports:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:

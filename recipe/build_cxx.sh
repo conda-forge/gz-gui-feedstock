@@ -8,7 +8,7 @@ fi
 # In cross-compilation, we need to let know Qt where to find codegen tools in the build environment
 # See https://github.com/conda-forge/qt-main-feedstock/issues/273
 if [[ "$build_platform" != "$target_platform" ]]; then
-    export QT_HOST_PATH="$BUILD_PREFIX"
+    export CMAKE_ARGS="$CMAKE_ARGS -DQT_HOST_PATH=$BUILD_PREFIX"
 fi
 
 rm -rf build

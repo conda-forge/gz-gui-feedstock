@@ -9,34 +9,34 @@ MACOSX_SDK_VERSION:        # [osx and x86_64]
 # The package being built is commented out to avoid crashes in conda-smithy rerender
 
 libgz_cmake:
-  - 5
+  - "5"
 libgz_common:
-  - 7
+  - "7"
 libgz_fuel_tools:
-  - 11
+  - "11"
 libgz_sim:
-  - 10
+  - "10"
 #libgz_gui:
 #  - 10
 libgz_launch:
-  - 9
+  - "9"
 libgz_math:
-  - 9
+  - "9"
 libgz_msgs:
-  - 12
+  - "12"
 libgz_physics:
-  - 9
+  - "9"
 libgz_plugin:
-  - 4
+  - "4"
 libgz_rendering:
-  - 10
+  - "10"
 libgz_sensors:
-  - 10
+  - "10"
 libgz_tools:
-  - 2
+  - "2"
 libgz_transport:
-  - 15
+  - "15"
 libgz_utils:
-  - 4
+  - "4"
 libsdformat:
-  - 16
+  - "16"

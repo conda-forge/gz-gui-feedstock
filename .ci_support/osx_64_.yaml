@@ -42,8 +42,6 @@ libprotobuf:
 - 6.31.1
 macos_machine:
 - x86_64-apple-darwin13.4.0
-python_min:
-- '3.10'
 qt6_main:
 - '6.9'
 target_platform:

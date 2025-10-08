@@ -1,0 +1,115 @@
+schema_version: 1
+
+context:
+  component_name: gui
+  repo_name: ${{ "gz-" ~ component_name }}
+  version: 10.0.0
+  major_version: "10"
+  name: ${{ repo_name }}
+  component_version: ${{ component_name ~ major_version }}
+  cxx_name: ${{ "lib" ~ name }}
+
+recipe:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz
+    sha256: b5dd33aa20c43e34bbaf2c0c00a5bf5643f31d7808b52a38e90107b32f31b1c3
+
+build:
+  number: 0
+
+outputs:
+  - package:
+      name: ${{ cxx_name }}
+    build:
+      script:
+        - if: unix
+          then: build_cxx.sh
+        - if: win
+          then: bld_cxx.bat
+    requirements:
+      build:
+        - ${{ compiler('cxx') }}
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
+        - ninja
+        - cmake
+        - pkg-config
+        - if: build_platform != target_platform
+          then:
+            - qt6-main
+      host:
+        - libgz-cmake
+        - libabseil
+        - libprotobuf
+        - tinyxml2
+        - libgz-math
+        - libgz-common
+        - libgz-plugin
+        - libgz-transport
+        - libgz-rendering
+        - libgz-msgs
+        - libgz-tools
+        - libgz-utils
+        - qt6-main
+        - if: linux
+          then:
+            - libgl-devel
+        - if: win
+          then:
+            - dlfcn-win32
+      run:
+        # This is actually only necessary to make sure that find_package(gz-gui) works out of the box,
+        # as qt6 transitively calls find_package(OpenGL). As gz-gui is mostly a C++ library we add it
+        # as run dependency, even if the proper solution may be to have dedicated *-devel packages, that
+        # will depend on qt6-main-devel package, that itself should depend on libgl-devel (only on Linux)
+        - if: linux
+          then:
+            - libgl-devel
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+    tests:
+      - package_contents:
+          include:
+            - gz/${{ component_version }}/gz/${{ component_name }}.hh
+          lib:
+            - gz-${{ component_name }}
+      - script:
+          - cmake-package-check gz-${{ component_name }} --targets gz-${{ component_name }}::gz-${{ component_name }}
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+
+  - package:
+      name: ${{ name }}
+    requirements:
+      run:
+        - ${{ pin_subpackage(cxx_name, exact=True) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+    tests:
+      - script:
+          - cmake-package-check gz-${{ component_name }} --targets gz-${{ component_name }}::gz-${{ component_name }}
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+
+about:
+  homepage: https://github.com/gazebosim/${{ repo_name }}
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Builds on top of Qt to provide widgets which are useful when developing robotics applications, such as a 3D view, plots, dashboard, etc, and can be used together in a convenient unified interface.
+
+extra:
+  feedstock-name: ${{ repo_name }}
+  recipe-maintainers:
+    - wolfv
+    - traversaro
+    - Tobias-Fischer
+    - j-rivero

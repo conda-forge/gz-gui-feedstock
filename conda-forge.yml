@@ -1,6 +1,7 @@
+azure:
+  free_disk_space: true
 bot:
   abi_migration_branches:
-  # See https://github.com/gazebosim/docs/blob/master/tools/versions.md for current supported versions
   - v8
   - v9
   automerge: true
@@ -9,12 +10,10 @@ build_platform:
   osx_arm64: osx_64
 conda_build:
   pkg_format: '2'
+conda_build_tool: rattler-build
 conda_forge_output_validation: true
+conda_install_tool: pixi
 github:
   branch_name: main
   tooling_branch_name: main
-conda_build_tool: rattler-build
-conda_install_tool: pixi
 test: native_and_emulated
-azure:
-  free_disk_space: true

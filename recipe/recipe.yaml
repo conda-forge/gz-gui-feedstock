@@ -20,7 +20,7 @@ source:
       - 677.patch
 
 build:
-  number: 3
+  number: 4
 
 outputs:
   - package:

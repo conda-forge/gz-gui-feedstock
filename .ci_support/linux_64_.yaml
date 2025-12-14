@@ -39,7 +39,7 @@ libgz_utils:
 libprotobuf:
 - 6.31.1
 qt6_main:
-- '6.9'
+- '6.10'
 target_platform:
 - linux-64
 tinyxml2:

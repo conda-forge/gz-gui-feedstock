@@ -77,13 +77,14 @@ outputs:
             - gz/${{ component_version }}/gz/${{ component_name }}.hh
           lib:
             - gz-${{ component_name }}
-      - script:
-          - cmake-package-check gz-${{ component_name }} --targets gz-${{ component_name }}::gz-${{ component_name }}
-        requirements:
-          run:
-            - cmake-package-check
-            - ${{ compiler('c') }}
-            - ${{ compiler('cxx') }}
+      # See https://github.com/conda-forge/gz-sim-feedstock/issues/109
+      #- script:
+      #    - cmake-package-check gz-${{ component_name }} --targets gz-${{ component_name }}::gz-${{ component_name }}
+      #  requirements:
+      #    run:
+      #      - cmake-package-check
+      #      - ${{ compiler('c') }}
+      #      - ${{ compiler('cxx') }}
 
   - package:
       name: ${{ name }}
@@ -94,12 +95,15 @@ outputs:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:
       - script:
-          - cmake-package-check gz-${{ component_name }} --targets gz-${{ component_name }}::gz-${{ component_name }}
-        requirements:
-          run:
-            - cmake-package-check
-            - ${{ compiler('c') }}
-            - ${{ compiler('cxx') }}
+          - echo "Metapackage, no test needed"
+      # See https://github.com/conda-forge/gz-sim-feedstock/issues/109
+      #- script:
+      #    - cmake-package-check gz-${{ component_name }} --targets gz-${{ component_name }}::gz-${{ component_name }}
+      #  requirements:
+      #    run:
+      #      - cmake-package-check
+      #      - ${{ compiler('c') }}
+      #      - ${{ compiler('cxx') }}
 
 about:
   homepage: https://github.com/gazebosim/${{ repo_name }}

@@ -64,10 +64,11 @@ outputs:
         # This is actually only necessary to make sure that find_package(gz-gui) works out of the box,
         # as qt6 transitively calls find_package(OpenGL). As gz-gui is mostly a C++ library we add it
         # as run dependency, even if the proper solution may be to have dedicated *-devel packages, that
-        # will depend on qt6-main-devel package, that itself should depend on libgl-devel (only on Linux)
+        # will depend on qt6-main-devel package, that itself should depend on libgl-devel and libopengl-devel (only on Linux)
         - if: linux
           then:
             - libgl-devel
+            - libopengl-devel
       run_exports:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:

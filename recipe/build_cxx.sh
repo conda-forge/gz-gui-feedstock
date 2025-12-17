@@ -5,12 +5,6 @@ if [[ "${target_platform}" == osx-* ]]; then
     CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
-if [[ "${target_platform}" == linux-* ]]; then
-  CMAKE_ARGS="${CMAKE_ARGS} -DOPENGL_egl_LIBRARY:FILEPATH=${PREFIX}/lib/libEGL.so.1"
-  CMAKE_ARGS="${CMAKE_ARGS} -DEGL_opengl_LIBRARY:FILEPATH=${PREFIX}/lib/libGL.so.1"
-  CMAKE_ARGS="${CMAKE_ARGS} -DOPENGL_opengl_LIBRARY:FILEPATH=${PREFIX}/lib/libGL.so.1"
-fi
-
 rm -rf build
 mkdir build
 cd build

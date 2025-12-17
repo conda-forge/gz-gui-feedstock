@@ -82,7 +82,6 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gz--gui-green.svg)](https://anaconda.org/conda-forge/gz-gui) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-gui.svg)](https://anaconda.org/conda-forge/gz-gui) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-gui.svg)](https://anaconda.org/conda-forge/gz-gui) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-gui.svg)](https://anaconda.org/conda-forge/gz-gui) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--gui--python-green.svg)](https://anaconda.org/conda-forge/gz-gui-python) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-gui-python.svg)](https://anaconda.org/conda-forge/gz-gui-python) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-gui-python.svg)](https://anaconda.org/conda-forge/gz-gui-python) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-gui-python.svg)](https://anaconda.org/conda-forge/gz-gui-python) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gz--gui9-green.svg)](https://anaconda.org/conda-forge/gz-gui9) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-gui9.svg)](https://anaconda.org/conda-forge/gz-gui9) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-gui9.svg)](https://anaconda.org/conda-forge/gz-gui9) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-gui9.svg)](https://anaconda.org/conda-forge/gz-gui9) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--gui-green.svg)](https://anaconda.org/conda-forge/libgz-gui) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-gui.svg)](https://anaconda.org/conda-forge/libgz-gui) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-gui.svg)](https://anaconda.org/conda-forge/libgz-gui) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-gui.svg)](https://anaconda.org/conda-forge/libgz-gui) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--gui9-green.svg)](https://anaconda.org/conda-forge/libgz-gui9) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-gui9.svg)](https://anaconda.org/conda-forge/libgz-gui9) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-gui9.svg)](https://anaconda.org/conda-forge/libgz-gui9) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-gui9.svg)](https://anaconda.org/conda-forge/libgz-gui9) |
@@ -97,16 +96,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gz-gui, gz-gui-python, gz-gui9, libgz-gui, libgz-gui9` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gz-gui, gz-gui9, libgz-gui, libgz-gui9` can be installed with `conda`:
 
 ```
-conda install gz-gui gz-gui-python gz-gui9 libgz-gui libgz-gui9
+conda install gz-gui gz-gui9 libgz-gui libgz-gui9
 ```
 
 or with `mamba`:
 
 ```
-mamba install gz-gui gz-gui-python gz-gui9 libgz-gui libgz-gui9
+mamba install gz-gui gz-gui9 libgz-gui libgz-gui9
 ```
 
 It is possible to list all of the versions of `gz-gui` available on your platform with `conda`:

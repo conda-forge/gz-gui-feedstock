@@ -15,9 +15,9 @@ cxx_compiler:
 cxx_compiler_version:
 - '14'
 docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma9
+- quay.io/condaforge/linux-anvil-x86_64:alma10
 libabseil:
-- '20260107'
+- '20260526'
 libgz_cmake:
 - '5'
 libgz_common:
@@ -37,9 +37,9 @@ libgz_transport:
 libgz_utils:
 - '4'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 qt6_main:
-- '6.11'
+- '6'
 target_platform:
 - linux-64
 tinyxml2:

@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - vs2022
 libabseil:
-- '20260107'
+- '20260526'
 libgz_cmake:
 - '5'
 libgz_common:
@@ -29,9 +29,9 @@ libgz_transport:
 libgz_utils:
 - '4'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 qt6_main:
-- '6.11'
+- '6'
 target_platform:
 - win-64
 tinyxml2:

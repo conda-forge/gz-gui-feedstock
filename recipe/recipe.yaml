@@ -3,7 +3,7 @@ schema_version: 1
 context:
   component_name: gui
   repo_name: ${{ "gz-" ~ component_name }}
-  version: 10.0.0
+  version: "10.1.0"
   major_version: "10"
   name: ${{ repo_name }}
   component_version: ${{ component_name ~ major_version }}
@@ -15,10 +15,10 @@ recipe:
 
 source:
   - url: https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz
-    sha256: b5dd33aa20c43e34bbaf2c0c00a5bf5643f31d7808b52a38e90107b32f31b1c3
+    sha256: 43089a424c2e71038676710cdb3c9f71fcf4f788aeb426be36de102f541585b4
 
 build:
-  number: 4
+  number: 0
 
 outputs:
   - package:

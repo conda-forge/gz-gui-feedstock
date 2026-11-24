@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 c_compiler:
 - gcc
 c_compiler_version:
@@ -17,7 +19,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma10
 libabseil:
-- '20260526'
+- '20260817'
 libgz_cmake:
 - '5'
 libgz_common:
@@ -39,7 +41,7 @@ libgz_utils:
 libprotobuf:
 - 7.35.1
 qt6_main:
-- '6'
+- '6.11'
 target_platform:
 - linux-64
 tinyxml2:
